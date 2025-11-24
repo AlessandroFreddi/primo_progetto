@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Numeri pari {%endblock title%}
+
+{%block content%}
+<h1>Numeri pari</h1>
+
+{% for x in lista %}
+    {% if x|divisibleby:2 %}
+        <b style = "color:green">{{x}}</b>
+    {% else %}
+        <b style = "color:red">{{x}}</b>
+    {% endif %}
+{% endfor %}
+<br></br>
+<p>Ci sono: {{numPari}} numeri pari</p>
+<p>Ci sono: {{numDispari}} numeri dispari</p>
+
+{%endblock content%}

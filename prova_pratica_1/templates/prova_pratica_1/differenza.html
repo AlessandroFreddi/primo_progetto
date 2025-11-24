@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Differenza {%endblock title%}
+
+{%block content%}
+<h1>Differenza</h1>
+<b>Valore1 = {{ var1 }}</b> <br/>
+<b>Valore2 = {{ var2 }}</b> <br/>
+
+{% if var1 < var2 %}
+<br></br>
+    <p style = "color:green"> {{ var1 }}</span><span style = "color:black"> è minore di </span><span style = "color:red">{{ var2 }} </span>
+    <p>La differenza é: {{differenza}}</p>
+{% elif var1 > var2 %}
+<br></br>
+        <p style = "color:red"> {{ var1 }}</span><span style = "color:black"> è maggiore di </span><span style = "color:green">{{ var2 }} </span>
+        <p>La differenza é: {{differenza}}</p>
+{% elif var1 == var2 %}
+<br></br>
+        <p>{{var1}} è uguale a {{var2}}</p>
+        <p>La differenza é: 0</p>
+{% endif %}
+{%endblock content%}

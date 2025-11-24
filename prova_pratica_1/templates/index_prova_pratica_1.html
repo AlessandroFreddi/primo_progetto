@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+{%block title%} {{block.super}} | Index prova pratica 1 {%endblock title%}
+
+{%block content%}
+<h1>Index prova pratica 1</h1>
+<ol>
+    <li><a href="{% url 'prova_pratica_1:differenza'%}">Differenza</a></li>
+    <li><a href="{% url 'prova_pratica_1:pari'%}">Numeri pari</a></li>
+</ol>
+{%endblock content%}
