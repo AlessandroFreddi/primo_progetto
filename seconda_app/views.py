@@ -27,4 +27,4 @@ def es_for(request):
     return render(request, "seconda_app/es_for.html", context)
 
 def index_secondaApp(request):
-    return render(request,"index_secondaApp.html")
+    return render(request,"seconda_app/index_secondaApp.html")

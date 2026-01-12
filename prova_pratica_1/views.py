@@ -3,7 +3,7 @@ import random
 
 # Create your views here.
 def index_prova_pratica_1(request):
-    return render(request,"index_prova_pratica_1.html")
+    return render(request,"prova_pratica_1/index_prova_pratica_1.html")
 
 def differenza(request):
     var1 = random.randint(1,20)

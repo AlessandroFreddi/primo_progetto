@@ -23,4 +23,4 @@ def variabili(request):
     return render(request, "prima_app/variabili.html",context)
 
 def index(request):
-    return render(request,"index.html")
+    return render(request,"prima_app/index.html")
