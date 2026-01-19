@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Articolo, Giornalista
+import datetime
 
 # Create your views here.
 def home(request):
@@ -86,6 +87,23 @@ def queryBase(request):
 
     #15. tutti gli articoli che contengono una certa parola nel titolo:
     articoli_parola = Articolo.objects.filter(titolo__icontains='importante')
-
     
+    context = {
+    'articoli_cognome': articoli_cognome,
+    'numero_totale_articoli': numero_totale_articoli,
+    'numero_articoli_giornalista_1': numero_articoli_giornalista_1,
+    'articoli_ordinati': articoli_ordinati,
+    'articoli_senza_visualizzazioni': articoli_senza_visualizzazioni,
+    'articolo_piu_visualizzato': articolo_piu_visualizzato,
+    'giornalisti_data': giornalisti_data,
+    'articoli_del_giorno': articoli_del_giorno,
+    'articoli_periodo': articoli_periodo,
+    'articoli_giornalisti_nati': articoli_giornalisti,
+    'giornalista_giovane': giornalista_giovane,
+    'giornalista_anziano': giornalista_anziano,
+    'ultimi_5_articoli': ultimi_articoli,
+    'articoli_minime_visualizzazioni': articoli_minime_visualizzazioni,
+    'articoli_parola': articoli_parola,
+}
+    return render(request, "news/query.html", context)
         
