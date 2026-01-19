@@ -31,7 +31,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary light">
     <a class="navbar-brand" href="/">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,6 +77,19 @@
             <a class="dropdown-item" href="{% url 'prova_pratica_1:index_prova_pratica_1'%}">Index</a>
             <a class="dropdown-item" href="{% url 'prova_pratica_1:differenza'%}">Differenza</a>
             <a class="dropdown-item" href="{% url 'prova_pratica_1:pari'%}">Numeri pari</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            news
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'news:index_news'%}">Index</a>
+            <a class="dropdown-item" href="{% url 'news:home'%}">Home</a>
+            <a class="dropdown-item" href="{% url 'news:articolo_detail' 1%}">Dettagli articolo</a>
+            <a class="dropdown-item" href="{% url 'news:lista_articoli'%}">Lista articoli</a>
           </div>
         </li>
 

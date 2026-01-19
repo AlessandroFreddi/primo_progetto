@@ -21,7 +21,7 @@ class Articolo(models.Model):
     titolo = models.CharField(max_length=100)
     contenuto = models.TextField()
     giornalista = models.ForeignKey(Giornalista, on_delete=models.CASCADE, related_name="articoli")
-    data = models.models.DateField(auto_now=True, blank=True)
+    data = models.DateField(auto_now=True, blank=True)
     visualizzazioni = models.IntegerField(default=0,blank=True)
 
     def __str__(self):
