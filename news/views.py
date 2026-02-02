@@ -88,6 +88,35 @@ def queryBase(request):
     #15. tutti gli articoli che contengono una certa parola nel titolo:
     articoli_parola = Articolo.objects.filter(titolo__icontains='importante')
     
+    #16 Articoli pubblicati in un certo mese di un anno specifico:
+    articoli_mese_anno = Articolo.objects.filter(data__month=1, data__year=2023)
+    
+    #17 Giornalisti con almeno un articolo con più di 100 visualizzazioni
+    giornalisti_con_articoli_popolari = Giornalista.objects.filter(articoli__visualizzazioni__gte=100).distinct()
+
+    #UTILIZZO DI PIU' CONDIZIONI DI SELEZIONE
+    data = datetime.date (1990, 1, 1)
+    visualizzazioni = 50
+    
+    #18 Selezione AND: secondo art Stefano Romano
+    articoli_con_and = Articolo.objects.filter(giornalista__anno_di_nascita__gt=data, visualizzazioni__gte=visualizzazioni)
+    
+    #per mettere in OR le condizioni utilizzare l'operatore Q
+    from django.db.models import Q
+    
+    #19 Selezione OR: primo articolo, primo art luigi verdi, secondo art luigi verdi, primo art Giuseppe Neri, secondo art Giuseppe Neri, primo art Paolo Ferrari, secondo art Paolo Ferrari, primo art Andrea Colombo, secondo art Andrea Colombo importante, primo art Stefano Romano, secondo art Stefano Romano
+    articoli_con_or = Articolo.objects.filter(Q(giornalista__anno_di_nascita__gt=data) | Q(visualizzazioni__lte=visualizzazioni))
+    
+    #per ik NOT (~) utilizzare l'operatore Q
+    from django.db.models import Q
+    
+    #20 Selezione NOT: primo articolo, primo art luigi verdi, secondo art luigi verdi, primo art Giuseppe Neri, secondo art Giuseppe Neri, primo art Paolo Ferrari, secondo art Paolo Ferrari, primo art Stefano Romano, secondo art Stefano Romano
+    articoli_con_not = Articolo.objects.filter(~Q(giornalista__anno_di_nascita__lt=data))
+    
+    #oppure il metodo exclude
+    # Selezione EXCLUDE: primo articolo, primo art luigi verdi, secondo art luigi verdi, primo art Giuseppe Neri, secondo art Giuseppe Neri, primo art Paolo Ferrari, secondo art Paolo Ferrari, primo art Stefano Romano, secondo art Stefano Romano
+    articoli_con_exclude = Articolo.objects.exclude(giornalista__anno_di_nascita__lt=data)
+    
     context = {
     'articoli_cognome': articoli_cognome,
     'numero_totale_articoli': numero_totale_articoli,
@@ -104,6 +133,18 @@ def queryBase(request):
     'ultimi_5_articoli': ultimi_articoli,
     'articoli_minime_visualizzazioni': articoli_minime_visualizzazioni,
     'articoli_parola': articoli_parola,
+    
+    'articoli_mese_anno' : articoli_mese_anno,
+    'giornalisti_con_articoli_popolari' : giornalisti_con_articoli_popolari,
+    'articoli_con_and': articoli_con_and,
+    'articoli_con_or': articoli_con_or,
+    'articoli_con_not': articoli_con_not,
+    'articoli_con_exclude': articoli_con_exclude
 }
     return render(request, "news/query.html", context)
         
+def giornalistaDetailView(request, pk):
+    giornalista = get_object_or_404(Giornalista, pk=pk)
+    articoli = Articolo.objects.all()
+    context = {"giornalista": giornalista, "articoli":articoli}
+    return render(request, "news/giornalista_detail.html", context)

@@ -94,5 +94,42 @@
     {% for articolo in articoli_parola %}
         <p>{{ articolo.titolo }}</p>
     {% endfor %}
+    <hr>
+
+    <h4>16. Articoli pubblicati a gennaio del 2023</h4>
+    {% for articolo in articoli_mese_anno%}
+        <p>{{ articolo.titolo }}</p>
+    {% endfor %}
+    <hr>
+
+    <h4>17. Giornalisti con almeno 100 visualizzazioni in un articolo</h4>
+    {% for giornalisti in giornalisti_con_articoli_popolari%}
+        <p>{{ giornalisti }}</p>
+    {% endfor %}
+    <hr>
+
+    <h4>18. Selezione AND</h4>
+    {% for articolo in articoli_con_and%}
+        <p>{{ articolo.titolo }}</p>
+    {% endfor %}
+    <hr>
+
+    <h4>19. Selezione OR</h4>
+    {% for articolo in articoli_con_or%}
+        <p>{{ articolo.titolo }}</p>
+    {% endfor %}
+    <hr>
+
+    <h4>20. Selezione NOT</h4>
+    {% for articolo in articoli_con_not%}
+        <p>{{ articolo.titolo }}</p>
+    {% endfor %}
+    <hr>
+
+    <h4>21. Selezione EXCLUDE</h4>
+    {% for articolo in articoli_con_exclude%}
+        <p>{{ articolo.titolo }}</p>
+    {% endfor %}
+    
 
 {% endblock content%}

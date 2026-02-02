@@ -1,0 +1,1 @@
+C:\Users\hp\Documents\django\venv\Scripts\activate.bat

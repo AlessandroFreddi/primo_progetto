@@ -4,11 +4,18 @@
 
 {% block content %} <h4>{{ titolo }}</h4>
 {% for articolo in articoli %}
-    <p><strong>Titolo: </strong>{{ articolo.titolo }}</p>
-    <p><strong>Contenuto: </strong>{{ articolo.contenuto }}</p>
-    <p><strong>Autore: </strong>{{ articolo.giornalista }}</p>
-    <p><strong>Data: </strong>{{ articolo.data }}</p>
-    <p><strong>Visualizzazioni: </strong>{{ articolo.visualizzazioni }}</p>
+    <p><strong>Titolo: </strong>
+        <!-- metodo non ottimale per creare un link -->
+        <!-- <a href="articoli/{{ articolo.id }}"> {{ articolo.titolo }}</a> -->
+         <a href={% url 'news:articolo_detail' articolo.id %}>{{ articolo.titolo }}</a>
+    </p>
+    <p><strong>Contenuto: </strong>
+        {{ articolo.contenuto }}
+    </p>
+    <p><strong>Autore: </strong>
+        <!-- metodo ottimale per creare un link -->
+        <a href={% url 'news:giornalista_detail' articolo.giornalista.id %}>{{ articolo.giornalista }}</a>
+    </p>
     <hr>
 {% endfor %}
 {%endblock content %}
