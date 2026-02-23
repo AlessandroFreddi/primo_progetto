@@ -10,4 +10,5 @@ urlpatterns = [
     #path('lista_articoli/<int:pk>', listaArticoli, name='lista_articoli')
     path('query', queryBase, name='query'),
     path("giornalista/<int:pk>", giornalistaDetailView, name="giornalista_detail")
+    
 ]

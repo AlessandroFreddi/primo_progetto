@@ -148,3 +148,4 @@ def giornalistaDetailView(request, pk):
     articoli = Articolo.objects.all()
     context = {"giornalista": giornalista, "articoli":articoli}
     return render(request, "news/giornalista_detail.html", context)
+
